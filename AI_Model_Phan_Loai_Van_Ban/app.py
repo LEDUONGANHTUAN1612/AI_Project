@@ -2,6 +2,9 @@ import streamlit as st
 import joblib
 import os
 
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # Cấu hình giao diện trang web
 st.set_page_config(page_title="AI Phân loại Văn bản", layout="centered", page_icon="🤖")
 
@@ -11,8 +14,8 @@ st.markdown("Nhập một đoạn văn bản tiếng Việt và AI sẽ tự đ�
 # Caching lại việc tải tải model để không load lại mỗi khi reload trang
 @st.cache_resource
 def load_model():
-    model_path = os.path.join("models", "model.pkl")
-    vector_path = os.path.join("models", "vectorizer.pkl")
+    model_path = os.path.join(SCRIPT_DIR, "models", "model.pkl")
+    vector_path = os.path.join(SCRIPT_DIR, "models", "vectorizer.pkl")
     
     if os.path.exists(model_path) and os.path.exists(vector_path):
         model = joblib.load(model_path)
