@@ -51,8 +51,21 @@ def test_model():
     
     acc = accuracy_score(y_test, y_pred)
     print(f"\n✅ Kiểm thử mô hình hoàn tất!")
-    print(f"Độ chính xác (Accuracy): {acc * 100:.2f}%\n")
-    print("Báo cáo phân loại (Classification Report):")
+    print(f"Độ chính xác chung (Accuracy): {acc * 100:.2f}%\n")
+    
+    print("Chi tiết dự đoán theo từng chủ đề:")
+    print("-" * 65)
+    print(f"{'Chủ đề':<15} | {'Thực tế':<10} | {'AI Dự đoán':<12} | {'Nhận diện đúng':<12}")
+    print("-" * 65)
+    labels = sorted(df["label"].unique())
+    for label in labels:
+        actual_count = sum(y_test == label)
+        pred_count = sum(y_pred == label)
+        correct_count = sum((y_test == label) & (y_pred == label))
+        print(f"{label:<15} | {actual_count:<10} | {pred_count:<12} | {correct_count:<12}")
+    print("-" * 65)
+    
+    print("\nBáo cáo phân loại (Classification Report):")
     print(classification_report(y_test, y_pred))
 
 if __name__ == "__main__":
