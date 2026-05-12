@@ -4,7 +4,7 @@ from pathlib import Path
 from load_vntc_data import extract_text_from_txt
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-TEST_DIR = os.path.join(SCRIPT_DIR, "vntc_tmp", "Test")
+TEST_DIR = os.path.join(SCRIPT_DIR, "vntc_data", "Test")
 TEST_FILE = os.path.join(SCRIPT_DIR, "test_data.csv")
 
 CATEGORIES = ["Chính trị", "Công nghệ", "Kinh tế", "Thể thao"]
